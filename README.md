@@ -1,8 +1,65 @@
-# database-management-system-laboratory
+# Database Management System Laboratory
 
-This README contains the full contents for each lab SQL file so you can copy/paste or review them before adding to GitHub. The individual `.sql` files in this folder will not be modified here — this document simply embeds their content.
+This repository contains SQL lab exercises for DBMS coursework. Each `.sql` file in the `lab` folder contains SQL statements you can run against a relational database (MySQL/Postgres). This README explains the repository layout and how to run and push the files to GitHub.
 
-Each lab section below is labeled with the filename and contains the SQL content in a fenced block. Adjust DBMS-specific syntax as needed (MySQL vs PostgreSQL).
+Contents
+ - `lab1.sql`  — Basic DDL/DML: schema, inserts, simple queries
+ - `lab2.sql`  — Joins, WHERE, ORDER BY, subqueries
+ - `lab2practise.sql` — Views and set operations
+ - `lab3.sql`  — Aggregation, GROUP BY, HAVING
+ - `lab4.sql`  — Transactions, constraints, examples
+ - `lab5.sql`  — Indexing and query-plan examples
+ - `lab6.sql`  — Normalization and migration notes
+ - `lab7.sql`  — Stored functions / procedures examples
+ - `lab9.sql`  — Backup/export examples
+
+Prerequisites
+- A relational DBMS (MySQL, PostgreSQL, or SQLite). Some statements (e.g., `SERIAL`, `plpgsql`, `COPY`) are DB-specific — adjust if necessary.
+
+How to run a single lab file (MySQL)
+
+```bash
+mysql -u your_user -p your_database < lab1.sql
+```
+
+How to run a single lab file (Postgres)
+
+```bash
+psql -U your_user -d your_database -f lab1.sql
+```
+
+Git / GitHub quick guide
+
+1. Initialize repository (if not already):
+
+```bash
+git init
+git add .
+git commit -m "Add DBMS lab files"
+```
+
+2. Set remote and push. If your remote default branch is `main` but your local branch is `master`, rename locally then push:
+
+```bash
+git branch -m master main
+git remote add origin <REMOTE_URL>
+git push -u origin main
+```
+
+Or push the local `master` branch to remote `main`:
+
+```bash
+git push origin master:main
+```
+
+Notes and recommendations
+- Keep this README short and include only essential instructions — the SQL files contain the examples and exercises. Replace placeholder names (database/user) before running commands.
+- If a SQL file uses DB-specific features, search and replace or modify to match your target DBMS.
+
+If you want, I can:
+- create a ZIP archive of the `lab` folder for upload;
+- prepare a `git` commit and push script that you can run locally;
+- or adapt all `.sql` files for a specific DBMS (MySQL or Postgres).
 
 ---
 
@@ -308,41 +365,3 @@ INSERT INTO Students_snapshot SELECT * FROM Students;
 ```
 
 ---
-
-## How to add these files to GitHub (quick guide)
-
-1. Initialize and commit locally (if repository not initialized):
-
-```bash
-git init
-git add .
-git commit -m "Initial add: DBMS lab files"
-```
-
-2. If your remote uses `main` but your local branch is `master`, either rename or push accordingly:
-
-- Rename local branch to `main` and push:
-
-```bash
-git branch -m master main
-git push -u origin main
-```
-
-- Or push local `master` as remote `main`:
-
-```bash
-git push origin master:main
-```
-
-3. To push local `master` as `master` on remote (if preferred):
-
-```bash
-git push -u origin master
-```
-
-Notes:
-- These SQL examples are generic; adapt types and admin commands for your DBMS (MySQL, PostgreSQL, SQLite).
-- Some commands (COPY, EXPLAIN ANALYZE) may require elevated privileges or different syntax across DBMS.
-
-If you want I can also create a single `labs.zip` containing all `.sql` files or prepare a commit script. Tell me which next step you prefer.
-
